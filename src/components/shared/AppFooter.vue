@@ -10,26 +10,27 @@ export default {
 					id: 1,
 					name: 'GitHub',
 					icon: 'github',
-					url: 'https://github.com/realstoman',
+					url: 'https://lab.ssafy.com/s08/a19/13_whereishome_vue/pair07_jominsu_kangsooji.git',
 				},
-				{
-					id: 2,
-					name: 'Twitter',
-					icon: 'twitter',
-					url: 'https://twitter.com/realstoman',
-				},
-				{
-					id: 3,
-					name: 'Medium',
-					icon: 'book',
-					url: 'https://stoman.medium.com',
-				},
-				{
-					id: 4,
-					name: 'Instagram',
-					icon: 'instagram',
-					url: 'https://instagram.com/realstoman',
-				},
+				
+				// {
+				// 	id: 2,
+				// 	name: 'Twitter',
+				// 	icon: 'twitter',
+				// 	url: 'https://twitter.com/realstoman',
+				// },
+				// {
+				// 	id: 3,
+				// 	name: 'Medium',
+				// 	icon: 'book',
+				// 	url: 'https://stoman.medium.com',
+				// },
+				// {
+				// 	id: 4,
+				// 	name: 'Instagram',
+				// 	icon: 'instagram',
+				// 	url: 'https://instagram.com/realstoman',
+				// },
 			],
 		};
 	},
@@ -52,9 +53,9 @@ export default {
 				class="flex flex-col justify-center items-center mb-12 sm:mb-20"
 			>
 				<p
-					class="font-general-semibold text-3xl sm:text-4xl font-semibold text-primary-dark dark:text-primary-light mb-5"
+					class="font-general-semibold text-3xl sm:text-2xl font-semibold text-primary-dark dark:text-primary-light mb-5"
 				>
-					Follow me
+					You can check out the project in the repository below. 
 				</p>
 				<ul class="flex gap-4 sm:gap-8">
 					<a

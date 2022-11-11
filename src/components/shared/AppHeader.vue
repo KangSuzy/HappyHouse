@@ -33,11 +33,7 @@ export default {
 					value: 'ui-ux',
 					name: 'UI/UX Design',
 				},
-				{
-					id: 4,
-					value: 'branding',
-					name: 'Branding & Anim',
-				},
+
 			],
 		};
 	},
@@ -143,13 +139,13 @@ export default {
 			<div
 				class="hidden sm:flex justify-between items-center flex-col md:flex-row"
 			>
-				<!-- Hire me button -->
+				<!-- Sign In button -->
 				<div class="hidden md:block">
 					<Button
-						title="Hire Me"
+						title="Sign In"
 						class="text-md font-general-medium bg-indigo-500 hover:bg-indigo-600 text-white shadow-sm rounded-md px-5 py-2.5 duration-300"
 						@click="showModal()"
-						aria-label="Hire Me Button"
+						aria-label="Sign In Button"
 					/>
 				</div>
 

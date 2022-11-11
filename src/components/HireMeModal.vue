@@ -44,7 +44,7 @@ export default {
 								<h5
 									class=" text-primary-dark dark:text-primary-light text-xl"
 								>
-									What project are you looking for?
+									Sign in
 								</h5>
 								<button
 									class="px-4 text-primary-dark dark:text-primary-light"
@@ -77,39 +77,22 @@ export default {
 											aria-label="Email"
 										/>
 									</div>
-									<div class="mt-6">
-										<select
-											class="w-full px-5 py-2 border-1 border-gray-200 dark:border-secondary-dark rounded-md text-md bg-secondary-light dark:bg-ternary-dark text-primary-dark dark:text-ternary-light"
-											id="subject"
-											name="subject"
-											type="text"
-											required=""
-											aria-label="Project Category"
-										>
-											<option
-												v-for="category in categories"
-												:key="category.id"
-												:value="category.value"
-												>{{ category.name }}</option
-											>
-										</select>
-									</div>
 
 									<div class="mt-6">
-										<textarea
+										<input
 											class="w-full px-5 py-2 border-1 border-gray-200 dark:border-secondary-dark rounded-md text-md bg-secondary-light dark:bg-ternary-dark text-primary-dark dark:text-ternary-light"
-											id="message"
-											name="message"
-											cols="14"
-											rows="6"
-											aria-label="Details"
-											placeholder="Project description"
-										></textarea>
+											id="password"
+											name="password"
+											type="password"
+											required=""
+											placeholder="Password"
+											aria-label="Password"
+										/>
 									</div>
 
 									<div class="mt-6 pb-4 sm:pb-1">
 										<Button
-											title="Send Request"
+											title="SignIn"
 											class="px-4
 											sm:px-6
 											py-2
@@ -120,7 +103,7 @@ export default {
 											rounded-md
 											focus:ring-1 focus:ring-indigo-900 duration-500"
 											type="submit"
-											aria-label="Submit Request"
+											aria-label="SignIn"
 										/>
 									</div>
 								</form>

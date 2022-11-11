@@ -3,8 +3,8 @@ export default {
 	data: () => {
 		return {
 			copyrightDate: new Date().getFullYear(),
-			projectName: 'Vue.js & Tailwind CSS Portfolio',
-			author: 'Stoman',
+			projectName: 'WhereIsMyHouse',
+			author: 'SOOJIKANG_JOMINSU',
 		};
 	},
 };
@@ -21,9 +21,9 @@ export default {
 				target="__blank"
 				class="font-general-medium hover:underline hover:text-indigo-600 dark:hover:text-indigo-300 duration-500"
 			>
-				{{ projectName }}
+				{{ projectName }}.
 			</a>
-			. Developed by
+			Developed by
 			<a
 				href="https://stoman.me"
 				target="__blank"
