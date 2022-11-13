@@ -2,7 +2,7 @@
 
 ## Initial page
 
-<img src="src/assets/images/settings.jpg" />
+<img src="vuejs-tailwindcss-portfolio/src/assets/images/settings.jpg" />
 
 ## Start with !
 
@@ -19,7 +19,7 @@ npm run serve
 - Home
 - About
 - Apt Info : Spring Boot 연동 .. ? 이라하나 까지 완성
-  <img src="src/assets/images/aptInfo.png" />
+  <img src="vuejs-tailwindcss-portfolio/src/assets/images/aptInfo.png" />
 - . . . 민수형
 - ssafyvue 라는 db 도 만들어서 했다 ... 요 !
 
