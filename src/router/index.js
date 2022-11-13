@@ -22,6 +22,18 @@ const routes = [
 			title: 'WhereIsHome - About',
 		},
 	},
+	{
+		path: '/apt',
+		name: 'apt',
+		// route level code-splitting
+		// this generates a separate chunk (about.[hash].js) for this route
+		// which is lazy-loaded when the route is visited.
+		component: () =>
+			import(/* webpackChunkName: "about" */ '../views/Apt.vue'),
+		meta: {
+			title: 'WhereIsHome - Apt Info',
+		},
+	},
 	// delete prj, single prj
 	// delete contact . . .
 ];
