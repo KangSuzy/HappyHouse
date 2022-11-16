@@ -97,7 +97,7 @@ _이미지 첨부예정_
   <img src="vuejs-tailwindcss-portfolio/src/assets/images/boardDelete.png" />
 
 - 글 삭제 성공 !
-  <img src="vuejs-tailwindcss-portfolio/src/assets/images/boardDeleteOK.png" />
+  <img src="vuejs-tailwindcss-portfolio/src/assets/images/boardDeleteOk.png" />
 
 ---
 
