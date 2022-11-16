@@ -1,34 +1,61 @@
 # WhereIsHome_Vue : 강수지 , 조민수
 
-## Initial page
+<p align="center"><img src="vuejs-tailwindcss-portfolio/src/assets/images/minsuhouse.jpg" width="400" height="400" /></p>
+<p align="center">민수와 수지의 행복한 부동산 커뮤니티</p>
 
-<img src="vuejs-tailwindcss-portfolio/src/assets/images/settings.jpg" />
+## 요구사항
 
-## Start with !
+_기능적 요구사항_
+| 기능 | 기능적 요구사항 |
+| :--------------------: | :-------------------------------------------------------------: |
+| 주택 실거래가 정보수집 | 국토교통부 : 실거래가 정보 ( xlsx ) 활용 데이터 가공 후 DB 저장 |
+| 주택 실거래가 검색 | 주택 실거래가 정보를 원하는 검색 정보에 따라 검색 결과 데이터 제공 |
+| 로그인 | DB 유저 정보가 있는지 확인 후 로그인 |
+| 회원관리 | 회원정보 가입, 수정, 탈퇴 |
+| 게시판 기능 | 게시판 글목록, 글작성, 글수정, 글삭제 상세기능 제공 |
+| 채팅 기능 | 커뮤니티 조성을 위한 실시간 채팅 기능 |
 
-##### Start a local dev server at `http://localhost:8080`:
-
-```
-npm run serve
-```
+_비기능적 요구사항_
+| 기능 | 비기능적 요구사항 |
+| :--------------------: | :-------------------------------------------------------------: |
+| 공공데이터의 정확성 | 공공데이터 API를 활용함으로 인한 공공데이터의 정확성이 요구됨 |
+| 응답성 | 검색에 대한 결과를 빠르게 응답해야 함 |
+| 사용성 | 웹 사이트에 대한 사전 지식이 없어도 쓰기 편해야함 |
+| 가용성 | 언제나 어떤 디바이스로든 서비스가 가능해야 함 |
+| 안전성 | 회원정보가 암호화되어 DB에 저장되어야 함 |
+| MSA | Rest API 적용 |
 
 ---
 
 # Website Structure
 
-- Home
-- About
-- Apt Info : Spring Boot 연동 .. ? 이라하나 까지 완성
-  <img src="vuejs-tailwindcss-portfolio/src/assets/images/aptInfo.png" />
-- . . . 민수형
-- ssafyvue 라는 db 도 만들어서 했다 ... 요 !
+## Home
+
+  <img src="vuejs-tailwindcss-portfolio/src/assets/images/...png" />
+## About
+  <img src="vuejs-tailwindcss-portfolio/src/assets/images/...png" />
+## Apt Info
+  <img src="vuejs-tailwindcss-portfolio/src/assets/images/...png" />
+## Board
+  <img src="vuejs-tailwindcss-portfolio/src/assets/images/...png" />
 
 ---
 
 # Function
 
-- 민수야 안녕
-- 같이 만나는 날 기능을 상의해보자
-- 그때까지 각자 할 일을 잘 해오길 바라 . .
-- 우리는 너무 여유가 넘쳐서 큰 일인 것 같아 !
-- 그런 우리를 칭찬해 ~ 찡 긋
+## 주택실거래가 검색
+
+- 설명 ...
+- 사진
+
+## 로그인 & 회원가입
+
+## 회원관리
+
+## 게시판 기능
+
+---
+
+# 아키텍처 구조
+
+  <img src="vuejs-tailwindcss-portfolio/src/assets/images/...png" />
