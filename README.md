@@ -31,44 +31,78 @@ _비기능적 요구사항_
 
 # 화면 설계
 
-## Home ( O )
+## 📌 Home ( O )
 
-  <img src="vuejs-tailwindcss-portfolio/src/assets/images/...png" />
+  <img src="vuejs-tailwindcss-portfolio/src/assets/images/home.png" />
 
-## Login ( X : modal 수정중 )
+## 📌 Login ( X : modal 수정중 )
 
-## Sign up ( X : modal 수정중 )
+_이미지 첨부예정_
 
-## About ( O )
+## 📌 Sign up ( X : modal 수정중 )
 
-  <img src="vuejs-tailwindcss-portfolio/src/assets/images/...png" />
+_이미지 첨부예정_
 
-## Apt Info ( X : 지역코드, 기간으로 검색만 가능한 상태 )
+## 📌 About ( O )
 
-  <img src="vuejs-tailwindcss-portfolio/src/assets/images/...png" />
-  
-## Board ( )
-  <img src="vuejs-tailwindcss-portfolio/src/assets/images/...png" />
+  <img src="vuejs-tailwindcss-portfolio/src/assets/images/about.png" />
 
-## Chat ( )
+---
 
-## <img src="vuejs-tailwindcss-portfolio/src/assets/images/...png" />
+## 📌 Apt Info ( X : 지역코드, 기간으로 검색만 가능한 상태 )
+
+  <img src="vuejs-tailwindcss-portfolio/src/assets/images/aptInfo.png" />
+
+---
+
+## 📌 Board ( O )
+
+  <img src="vuejs-tailwindcss-portfolio/src/assets/images/board.png" />
+
+---
+
+## 📌 Chat ( X : 기능 상의중 . . . )
+
+_이미지 첨부예정_
 
 # Function
 
 ## 주택실거래가 검색
 
-- 설명 ...
-- 사진
+- 주택 실거래가 정보를 원하는 검색 정보에 따라 검색 결과 데이터 제공
+  <img src="vuejs-tailwindcss-portfolio/src/assets/images/aptInfo.png" />
 
 ## 로그인 & 회원가입
 
+- 수정중 ..
+
 ## 회원관리
 
+- 수정중 ..
+
 ## 게시판 기능
+
+#### 게시판 글목록, 글작성, 글수정, 글삭제 상세기능 제공
+
+- 글 목록
+  <img src="vuejs-tailwindcss-portfolio/src/assets/images/board.png" />
+
+- 글 등록
+  <img src="vuejs-tailwindcss-portfolio/src/assets/images/boardWrite.png" />
+
+- 글 수정
+  <img src="vuejs-tailwindcss-portfolio/src/assets/images/boardModify.png" />
+
+- 글 삭제
+  <img src="vuejs-tailwindcss-portfolio/src/assets/images/boardDelete.png" />
+
+- 글 삭제 성공 !
+  <img src="vuejs-tailwindcss-portfolio/src/assets/images/boardDeleteOK.png" />
 
 ---
 
 # ERD
 
-  <img src="vuejs-tailwindcss-portfolio/src/assets/images/erd.png" />
+#### 데이터의 모델링
+
+<img src="vuejs-tailwindcss-portfolio/src/assets/images/erd.png" />
