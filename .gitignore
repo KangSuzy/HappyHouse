@@ -56,7 +56,6 @@ pnpm-debug.log*
 *.sln
 *.sw?
 /.metadata/
-<<<<<<< HEAD
 
 # Created by https://www.gitignore.io/api/git,java,maven,windows,eclipse
 # Edit at https://www.gitignore.io/?templates=git,java,maven,windows,eclipse
@@ -209,5 +208,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/git,java,maven,windows,eclipse
-=======
->>>>>>> 706fd705ddb5313d1cb04619bfa679aae443b05c
+
