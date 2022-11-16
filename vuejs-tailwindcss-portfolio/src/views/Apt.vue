@@ -7,14 +7,18 @@
 			py-2
 			sm:py-2.5
 			rounded-md" 
-		v-model="lawdCd">
+		v-model="lawdCd"
+		placeholder="지역코드"
+		>
 		<input type="number"
 		class="px-4
 			sm:px-6
 			py-2
 			sm:py-2.5
 			rounded-md" 
-		v-model="dealYmd">
+		v-model="dealYmd"
+		placeholder="계약월"
+		>
 		<button class="px-4
 			sm:px-6
 			py-2

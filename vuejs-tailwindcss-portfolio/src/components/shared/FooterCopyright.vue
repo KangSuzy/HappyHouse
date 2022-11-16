@@ -16,20 +16,21 @@ export default {
 			class="font-general-regular text-lg text-ternary-dark dark:text-ternary-light"
 		>
 			&copy; {{ copyrightDate }}.
-			<a
+			<!-- <a
 				href="https://github.com/realstoman/vuejs-tailwindcss-portfolio"
 				target="__blank"
 				class="font-general-medium hover:underline hover:text-indigo-600 dark:hover:text-indigo-300 duration-500"
-			>
+			> -->
 				{{ projectName }}.
-			</a>
+			<!-- </a> -->
 			Developed by
-			<a
+			<!-- <a
 				href="https://stoman.me"
 				target="__blank"
 				class="font-general-medium text-secondary-dark dark:text-secondary-light uppercase hover:underline hover:text-indigo-600 dark:hover:text-indigo-300 duration-500"
-				>{{ author }}</a
-			>
+				> -->
+				{{ author }}
+				<!-- </a> -->
 		</div>
 	</div>
 </template>

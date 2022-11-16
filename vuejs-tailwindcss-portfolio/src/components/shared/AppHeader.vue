@@ -64,14 +64,16 @@ export default {
 				<div>
 					<router-link to="/"
 						><img
+						style="width: 90px; height: 90px;"
 							v-if="theme === 'light'"
-							src="@/assets/images/logo-dark.svg"
+							src="@/assets/images/Initlogo.png"
 							class="w-36"
 							alt="Dark Logo"
 						/>
 						<img
+						style="width: 90px; height: 90px;"
 							v-else
-							src="@/assets/images/logo-light.svg"
+							src="@/assets/images/Initlogo.png"
 							class="w-36"
 							alt="Light Logo"
 						/>
@@ -156,4 +158,5 @@ export default {
 	@apply dark:text-indigo-400;
 	@apply font-medium;
 }
+
 </style>

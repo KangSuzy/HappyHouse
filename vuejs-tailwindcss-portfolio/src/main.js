@@ -4,12 +4,17 @@ import router from './router';
 import './assets/css/app.css';
 import BackToTop from 'vue-backtotop';
 
+import BootstrapVue3 from 'bootstrap-vue-3'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue-3/dist/bootstrap-vue-3.css'
+
 const feather = require('feather-icons');
 feather.replace();
 
 createApp(App)
 	.use(router)
 	.use(BackToTop)
+	.use(BootstrapVue3)
 	.mount('#app');
 
 const appTheme = localStorage.getItem('theme');

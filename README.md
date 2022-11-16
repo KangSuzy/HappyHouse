@@ -3,6 +3,8 @@
 <p align="center"><img src="vuejs-tailwindcss-portfolio/src/assets/images/minsuhouse.jpg" width="400" height="400" /></p>
 <p align="center">민수와 수지의 행복한 부동산 커뮤니티</p>
 
+### 애자일 !
+
 ## 요구사항
 
 _기능적 요구사항_
@@ -19,27 +21,38 @@ _비기능적 요구사항_
 | 기능 | 비기능적 요구사항 |
 | :--------------------: | :-------------------------------------------------------------: |
 | 공공데이터의 정확성 | 공공데이터 API를 활용함으로 인한 공공데이터의 정확성이 요구됨 |
+| Client - Server 구조 | Rest API 적용 |
 | 응답성 | 검색에 대한 결과를 빠르게 응답해야 함 |
 | 사용성 | 웹 사이트에 대한 사전 지식이 없어도 쓰기 편해야함 |
 | 가용성 | 언제나 어떤 디바이스로든 서비스가 가능해야 함 |
 | 안전성 | 회원정보가 암호화되어 DB에 저장되어야 함 |
-| MSA | Rest API 적용 |
 
 ---
 
-# Website Structure
+# 화면 설계
 
-## Home
+## Home ( O )
 
-  <img src="vuejs-tailwindcss-portfolio/src/assets/images/...png" />
-## About
-  <img src="vuejs-tailwindcss-portfolio/src/assets/images/...png" />
-## Apt Info
-  <img src="vuejs-tailwindcss-portfolio/src/assets/images/...png" />
-## Board
   <img src="vuejs-tailwindcss-portfolio/src/assets/images/...png" />
 
----
+## Login ( X : modal 수정중 )
+
+## Sign up ( X : modal 수정중 )
+
+## About ( O )
+
+  <img src="vuejs-tailwindcss-portfolio/src/assets/images/...png" />
+
+## Apt Info ( X : 지역코드, 기간으로 검색만 가능한 상태 )
+
+  <img src="vuejs-tailwindcss-portfolio/src/assets/images/...png" />
+  
+## Board ( )
+  <img src="vuejs-tailwindcss-portfolio/src/assets/images/...png" />
+
+## Chat ( )
+
+## <img src="vuejs-tailwindcss-portfolio/src/assets/images/...png" />
 
 # Function
 
@@ -56,6 +69,6 @@ _비기능적 요구사항_
 
 ---
 
-# 아키텍처 구조
+# ERD
 
-  <img src="vuejs-tailwindcss-portfolio/src/assets/images/...png" />
+  <img src="vuejs-tailwindcss-portfolio/src/assets/images/erd.png" />

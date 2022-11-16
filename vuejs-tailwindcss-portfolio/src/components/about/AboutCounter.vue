@@ -18,11 +18,11 @@ export default {
 <template>
 	<div class="mt-10 sm:mt-20 bg-primary-light dark:bg-ternary-dark shadow-sm">
 		<!-- About me counters -->
-		<div
+		<div style="display:table; height:50px;"
 			class="font-general-regular container mx-auto py-20 block sm:flex sm:justify-between sm:items-center"
 		>
 			<!-- Years of experience counter -->
-			<div class="mb-20 sm:mb-0">
+			<div class="mb-20 sm:mb-0"  style="display: table-cell; vertical-align: middle; padding-left: 10px;">
 				<counter
 					ref="counter"
 					:startAmount="0"
@@ -41,7 +41,7 @@ export default {
 			</div>
 
 			<!-- GitHub stars counter -->
-			<div class="mb-20 sm:mb-0">
+			<div class="mb-20 sm:mb-0" style="display: table-cell; vertical-align: middle; padding-left: 10px;">
 				<counter
 					ref="counter"
 					:startAmount="0"
@@ -59,7 +59,7 @@ export default {
 			</div>
 
 			<!-- Positive feedback counter -->
-			<div class="mb-20 sm:mb-0">
+			<div class="mb-20 sm:mb-0" style="display: table-cell; vertical-align: middle; padding-left: 10px;">
 				<counter
 					ref="counter"
 					:startAmount="0"
@@ -78,7 +78,7 @@ export default {
 			</div>
 
 			<!-- Projects completed counter -->
-			<div class="mb-20 sm:mb-0">
+			<div class="mb-20 sm:mb-0" style="display: table-cell; vertical-align: middle; padding-left: 10px;">
 				<counter
 					ref="counter"
 					:startAmount="0"
