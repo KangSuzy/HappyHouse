@@ -46,6 +46,16 @@ export default {
 		>
 		Seoul 19 MinSu & SooJi
 		</p>
+
+		<img src="@/assets/images/profile_about.jpg"/>
+
+		<p
+			class="font-general-medium text-2xl sm:text-2xl text-primary-dark dark:text-primary-light"
+		>
+		" 전국 1등 부동산 커뮤니티 " 언제 어디서든, 빠르고 쉬운 부동산 실거래가 검색가능 !
+		국토교통부 아파트매매 실거래 데이터 사용으로 신뢰도 있는 정보 제공 !
+		챗봇을 통해 24시간 궁금증 해결이 가능한 사이트 !
+		</p>
 	</div>
 </template>
 
