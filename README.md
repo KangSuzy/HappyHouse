@@ -1,6 +1,6 @@
 # WhereIsHome_Vue : 강수지 , 조민수
 
-<p align="center"><img src="vuejs-tailwindcss-portfolio/src/assets/images/minsuhouse.jpg" width="400" height="400" /></p>
+<p align="center"><img src="vuejs-tailwindcss-portfolio/src/assets/images/minsuhouse.png" width="400" height="400" /></p>
 <p align="center">민수와 수지의 행복한 부동산 커뮤니티</p>
 
 ### 애자일 ! 진행사항 정리
