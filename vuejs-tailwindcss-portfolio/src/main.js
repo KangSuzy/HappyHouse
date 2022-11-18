@@ -1,8 +1,11 @@
 import { createApp } from 'vue';
 import App from './App.vue';
+import store from "./store";
 import router from './router';
 import './assets/css/app.css';
 import BackToTop from 'vue-backtotop';
+
+import Vuex from 'vuex';
 
 import BootstrapVue3 from 'bootstrap-vue-3'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -13,6 +16,8 @@ feather.replace();
 
 createApp(App)
 	.use(router)
+	.use(Vuex)
+	.use(store)
 	.use(BackToTop)
 	.use(BootstrapVue3)
 	.mount('#app');

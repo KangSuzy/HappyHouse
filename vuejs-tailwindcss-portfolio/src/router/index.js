@@ -23,15 +23,12 @@ const routes = [
 		},
 	},
 	{
-		path: '/apt',
-		name: 'apt',
-		// route level code-splitting
-		// this generates a separate chunk (about.[hash].js) for this route
-		// which is lazy-loaded when the route is visited.
+		path: "/house",
+		name: "house",
 		component: () =>
-			import(/* webpackChunkName: "about" */ '../views/Apt.vue'),
+			import('../views/AppHouse.vue'),
 		meta: {
-			title: 'WhereIsHome - Apt Info',
+			title: 'WhereIsHome - House Search',
 		},
 	},
 	{
@@ -40,33 +37,33 @@ const routes = [
     component: () => import("@/views/Board"),
     redirect: "/board/list",
     children: [
-      {
-        path: "list",
-        name: "boardlist",
-        component: () => import("@/components/board/BoardList"),
-      },
-      {
-        path: "write",
-        name: "boardwrite",
-        component: () => import("@/components/board/BoardWrite"),
-      },
-      {
-        path: "view/:articleno",
-        name: "boardview",
-        component: () => import("@/components/board/BoardView"),
-      },
-      {
-        path: "modify",
-        name: "boardmodify",
-        component: () => import("@/components/board/BoardModify"),
-      },
-      {
-        path: "delete/:articleno",
-        name: "boarddelete",
-        component: () => import("@/components/board/BoardDelete"),
-      },
-    ],
-  },
+			{
+				path: "list",
+				name: "boardlist",
+				component: () => import("@/components/board/BoardList"),
+			},
+			{
+				path: "write",
+				name: "boardwrite",
+				component: () => import("@/components/board/BoardWrite"),
+			},
+			{
+				path: "view/:articleno",
+				name: "boardview",
+				component: () => import("@/components/board/BoardView"),
+			},
+			{
+				path: "modify",
+				name: "boardmodify",
+				component: () => import("@/components/board/BoardModify"),
+			},
+			{
+				path: "delete/:articleno",
+				name: "boarddelete",
+				component: () => import("@/components/board/BoardDelete"),
+			},
+		],
+	},
 ];
 
 const router = createRouter({
