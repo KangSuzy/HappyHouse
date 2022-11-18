@@ -64,16 +64,16 @@ export default {
 				<div>
 					<router-link to="/"
 						><img
-						style="width: 90px; height: 90px;"
+						style="width: 300px; height: 300px;"
 							v-if="theme === 'light'"
-							src="@/assets/images/Initlogo.png"
+							src="@/assets/images/Homelogo2.png"
 							class="w-36"
 							alt="Dark Logo"
 						/>
 						<img
-						style="width: 90px; height: 90px;"
+						style="width: 300px; height: 300px;"
 							v-else
-							src="@/assets/images/Initlogo.png"
+							src="@/assets/images/Homelogo2.png"
 							class="w-36"
 							alt="Light Logo"
 						/>

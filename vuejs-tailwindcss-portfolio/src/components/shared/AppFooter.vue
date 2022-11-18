@@ -53,9 +53,9 @@ export default {
 				class="flex flex-col justify-center items-center mb-12 sm:mb-20"
 			>
 				<p
-					class="font-general-semibold text-3xl sm:text-2xl font-semibold text-primary-dark dark:text-primary-light mb-5"
+					class="font-general-semibold text-2xl sm:text-2xl font-semibold text-primary-dark dark:text-primary-light mb-5"
 				>
-					You can check out the project in the repository below. 
+					You can check out the project in the repository below
 				</p>
 				<ul class="flex gap-4 sm:gap-8">
 					<a

@@ -1,66 +1,77 @@
 <script>
-// import AboutClientSingle from './AboutClientSingle.vue';
 
-export default {
+import { defineComponent } from 'vue'
+import { Carousel, Pagination, Slide } from 'vue3-carousel'
+
+import 'vue3-carousel/dist/carousel.css'
+
+export default defineComponent({
 	components: {
-		// AboutClientSingle,
+	Carousel,
+    Slide,
+    Pagination,
 	},
-	data: () => {
-		return {
-			clientsHeading: 'About US',
-			clients: [
-				// {
-				// 	id: 1,
-				// 	title: 'ssafy',
-				// 	img: require('@/assets/images/ssafy.png'),
-				// },
+
+	data: ()=>{
+		return{
+			items : [
 				{
 					id: 1,
-					title: 'minsu&suzy',
-					img: require('@/assets/images/profile_about.jpg'),
+					img: require('@/assets/images/a1.jpg'),
 				},
-			],
-		};
-	},
-};
+				{
+					id: 2,
+					img: require('@/assets/images/a2.jpg'),
+				},
+				{
+					id: 3,
+					img: require('@/assets/images/a3.jpg'),
+				},
+				{
+					id: 4,
+					img: require('@/assets/images/a4.jpg'),
+				},
+			]
+		}
+	}
+})
 </script>
 
 <template>
-	<div class="mt-10 sm:mt-20">
-		<p
-			class="font-general-medium text-2xl sm:text-3xl text-primary-dark dark:text-primary-light"
-		>
-			{{ clientsHeading }}
-		</p>
-		<div class="grid grid-cols-1mt-10 sm:mt-14 gap-2" style="center">
-			<!-- <AboutClientSingle
-				v-for="client in clients"
-				:key="client.id"
-				:client="client"
-			/> -->
-			<img src="@/assets/images/profile_about.jpg"/>
-		</div>
+	<Carousel :autoplay="3000" :wrap-around="true">
 
-		<p
-			class="font-general-medium text-2xl sm:text-2xl text-primary-dark dark:text-primary-light"
-		>
-		Seoul 19 MinSu & SooJi
-		</p>
+    <Slide v-for="item in items" :key="item.id" :item="item">
+		<!-- <div class="carousel__item"> -->
+		<img :src="item.img">
+		<!-- </div> -->
+    </Slide>
 
-		<img src="@/assets/images/profile_about.jpg"/>
+		<template #addons>
+		<Pagination />
+		<br>
 
-		<p
-			class="font-general-medium text-2xl sm:text-2xl text-primary-dark dark:text-primary-light"
-		>
-		" 전국 1등 부동산 커뮤니티 " 언제 어디서든, 빠르고 쉬운 부동산 실거래가 검색가능 !
-		국토교통부 아파트매매 실거래 데이터 사용으로 신뢰도 있는 정보 제공 !
-		챗봇을 통해 24시간 궁금증 해결이 가능한 사이트 !
-		</p>
-	</div>
+		<!-- <img src="@/assets/images/a4.jpg"> -->
+
+		<h4 style="color: green; font-weight: bold;"> " 전국 1등 부동산 커뮤니티 "</h4>
+		<p> 언제 어디서든 부동산의 궁금증 해결이 가능한 사이트 !</p>
+		</template>
+	</Carousel>
 </template>
 
 <style scoped>
-	img{
+	/* img{
 		display: block; margin: 0px auto;
+	} */
+
+	.carousel__item {
+		min-height: 200px;
+		width: 100%;
+		background-color: var(--vc-clr-primary);
+		color: var(--vc-clr-white);
+		font-size: 20px;
+		border-radius: 8px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 </style>

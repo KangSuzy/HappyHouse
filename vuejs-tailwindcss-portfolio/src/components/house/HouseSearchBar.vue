@@ -52,6 +52,7 @@ export default {
     // this.$store.dispatch("getSido");
     // this.sidoList();
     this.CLEAR_SIDO_LIST();
+    this.CLEAR_GUGUN_LIST();
     this.CLEAR_APT_LIST();
     this.getSido();
   },
@@ -70,6 +71,7 @@ export default {
     searchApt() {
       if (this.gugunCode) this.getHouseList(this.gugunCode);
     },
+    
   },
 };
 </script>

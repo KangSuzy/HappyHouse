@@ -61,13 +61,13 @@ export default {
 			<img
 				style="width: 800px; height: 800px;"
 				v-if="theme === 'light'"
-				src="@/assets/images/minsuhouse.jpg"
+				src="@/assets/images/minsuhouse.png"
 				alt="Developer"
 			/>
 			<img
 				style="width: 800px; height: 800px;"
 				v-else
-				src="@/assets/images/minsuhouse.jpg"
+				src="@/assets/images/minsuhouse.png"
 				alt="Developer"
 			/>
 		</div>
@@ -75,5 +75,10 @@ export default {
 </template>
 
 <style scoped>
-
+a{
+	@apply text-indigo-700;
+	@apply dark:text-indigo-400;
+	@apply font-medium;
+	text-decoration: none;
+}
 </style>
