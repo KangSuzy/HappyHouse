@@ -65,4 +65,7 @@ export default {
   width: 300px;
   text-align: left;
 }
+a{
+	text-decoration: none;
+}
 </style>

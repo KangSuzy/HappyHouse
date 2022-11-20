@@ -50,7 +50,7 @@ export default {
 					></i> -->
 					<span
 						class="text-sm sm:text-lg font-general-medium duration-100"
-						>Search For</span
+						>Search</span
 					></a
 				>
 			</div>

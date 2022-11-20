@@ -33,6 +33,13 @@
           ></b-form-textarea>
         </b-form-group>
 
+        <b-form-group id="file-group" label="파일" label-for="file_name">
+          <div class="custom-file">
+            <input id="customFile" type="file" @change="handleFileChange"/>
+            <label class="custom-file-label" for="customFile">{{file_name}}</label>
+          </div>
+        </b-form-group>
+
         <b-button type="submit" variant="primary" class="m-1" v-if="this.type === 'register'">Post</b-button>
         <b-button type="submit" variant="primary" class="m-1" v-else>Modify</b-button>
         <b-button type="reset" variant="danger" class="m-1">Cancel</b-button>
@@ -53,6 +60,7 @@ export default {
         userid: "",
         subject: "",
         content: "",
+        file_name: "",
       },
       isUserid: false,
     };
@@ -75,7 +83,6 @@ export default {
   methods: {
     onSubmit(event) {
       event.preventDefault();
-
       let err = true;
       let msg = "";
       !this.article.userid && ((msg = "작성자 입력해주세요"), (err = false), this.$refs.userid.focus());
@@ -90,6 +97,7 @@ export default {
       this.article.articleno = 0;
       this.article.subject = "";
       this.article.content = "";
+      this.article.file_name = "";
       this.moveList();
     },
     registArticle() {
@@ -98,6 +106,7 @@ export default {
           userid: this.article.userid,
           subject: this.article.subject,
           content: this.article.content,
+          file_name : this.article.file_name,
         })
         .then(({ data }) => {
           let msg = "등록 처리시 문제가 발생했습니다.";

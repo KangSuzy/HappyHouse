@@ -7,7 +7,8 @@
           :header-html="`<h3>${article.articleno}. ${article.subject}</h3>
           <hr>
           <div><h6>작성자 ${article.userid} | 조회수 [${article.hit}]</div>
-          <div>${article.regtime}</h6></div>`"
+          <div>${article.regtime}</h6></div>
+          `"
           class="mb-2"
           border-variant="dark"
           no-body
