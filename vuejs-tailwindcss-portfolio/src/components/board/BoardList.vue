@@ -7,14 +7,29 @@
     </b-row>
     <b-row>
 
+      <!-- 페이징 처리 하자 . . . -->
       <b-col>
-        <b-table striped hover :items="articles" :fields="fields" @row-clicked="viewArticle">
+        <b-table id="itemlist" striped hover 
+        :items="articles" 
+        :fields="fields"
+        :per-page="perPage"
+        :current-page="currentPage" 
+        @row-clicked="viewArticle">
           <template #cell(subject)="data">
             <router-link :to="{ name: 'boardview', params: { articleno: data.item.articleno } }">
               {{ data.item.subject }}
             </router-link>
           </template>
         </b-table>
+
+        <b-pagination
+        v-model="currentPage"
+        :total-rows="rows"
+        :per-page="perPage"
+        align = "center"
+        aria-controls="itemlist">
+        </b-pagination>
+
       </b-col>
     </b-row>
   </b-container>
@@ -25,8 +40,15 @@ import http from "@/api/http";
 
 export default {
   name: "BoardList",
+  created() {
+    http.get(`/board`).then(({ data }) => {
+      this.articles = data;
+    });
+  },
   data() {
     return {
+      perPage: 5, // 보여줄 페이지
+      currentPage: 1, // 현재 페이지
       articles: [],
       fields: [
         { key: "articleno", label: "글번호", tdClass: "tdClass" },
@@ -36,11 +58,6 @@ export default {
         { key: "hit", label: "조회수", tdClass: "tdClass" },
       ],
     };
-  },
-  created() {
-    http.get(`/board`).then(({ data }) => {
-      this.articles = data;
-    });
   },
   methods: {
     moveWrite() {
@@ -52,6 +69,11 @@ export default {
         params: { articleno: article.articleno },
       });
     },
+  },
+  computed:{
+    rows(){
+          return this.articles.length;
+      }
   },
 };
 </script>

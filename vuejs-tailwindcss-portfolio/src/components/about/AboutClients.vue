@@ -27,10 +27,10 @@ export default defineComponent({
 					id: 3,
 					img: require('@/assets/images/a3.jpg'),
 				},
-				{
-					id: 4,
-					img: require('@/assets/images/a4.jpg'),
-				},
+				// {
+				// 	id: 4,
+				// 	img: require('@/assets/images/a4.jpg'),
+				// },
 			]
 		}
 	}
