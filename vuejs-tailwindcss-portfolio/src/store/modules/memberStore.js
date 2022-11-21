@@ -35,10 +35,12 @@ const memberStore = {
   },
   actions: {
     async userConfirm({ commit }, user) {
+
       await login(
         user,
         ({ data }) => {
           if (data.message === "success") {
+            
             let accessToken = data["access-token"];
             let refreshToken = data["refresh-token"];
             // console.log("login success token created!!!! >> ", accessToken, refreshToken);

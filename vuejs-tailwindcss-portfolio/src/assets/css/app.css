@@ -142,6 +142,7 @@ body {
 
 .font-general-medium {
 	font-family: 'GeneralSans-Medium';
+	margin-right:10px;
 }
 
 @font-face {

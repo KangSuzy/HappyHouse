@@ -16,4 +16,22 @@
 		where userid = #{userid}
 	</select>
 	
+<select id="getRefreshToken" parameterType="string" resultType="string">
+		select token
+		from ssafy_member
+		where userid = #{userid}
+	</select>
+	
+	<update id="saveRefreshToken" parameterType="map">
+		update ssafy_member
+		set token = #{token}
+		where userid = #{userid}
+	</update>
+	
+	<update id="deleteRefreshToken" parameterType="map">
+		update ssafy_member
+		set token = #{token, jdbcType=VARCHAR}
+		where userid = #{userid}
+	</update>
+	
 </mapper>

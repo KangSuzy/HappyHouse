@@ -1,9 +1,9 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import store from "./store";
 import router from './router';
 import './assets/css/app.css';
 import BackToTop from 'vue-backtotop';
+import store from "./store";
 
 import Vuex from 'vuex';
 
@@ -17,9 +17,9 @@ feather.replace();
 createApp(App)
 	.use(router)
 	.use(Vuex)
-	.use(store)
 	.use(BackToTop)
 	.use(BootstrapVue3)
+	.use(store)
 	.mount('#app');
 
 const appTheme = localStorage.getItem('theme');
