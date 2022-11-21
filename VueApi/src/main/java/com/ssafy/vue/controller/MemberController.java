@@ -41,7 +41,7 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
-	@CrossOrigin(origins ="http:localhost:8081")
+	@CrossOrigin(origins ="http:localhost:8080")
 	@ApiOperation(value = "로그인", notes = "Access-token과 로그인 결과 메세지를 반환한다.", response = Map.class)
 	@PostMapping("/login")
 	public ResponseEntity<Map<String, Object>> login(
@@ -73,7 +73,7 @@ public class MemberController {
 	}
 
 	
-	@CrossOrigin(origins ="http:localhost:8081")
+	@CrossOrigin(origins ="http:localhost:8080")
 	@ApiOperation(value = "회원인증", notes = "회원 정보를 담은 Token을 반환한다.", response = Map.class)
 	@GetMapping("/info/{userid}")
 	public ResponseEntity<Map<String, Object>> getInfo(
@@ -104,24 +104,24 @@ public class MemberController {
 	}
 
 	
-	@CrossOrigin(origins ="http:localhost:8081")
-	@ApiOperation(value = "로그아웃", notes = "회원 정보를 담은 Token을 제거한다.", response = Map.class)
-	@GetMapping("/logout/{userid}")
-	public ResponseEntity<?> removeToken(@PathVariable("userid") String userid) {
-		Map<String, Object> resultMap = new HashMap<>();
-		HttpStatus status = HttpStatus.ACCEPTED;
-		try {
-			memberService.deleRefreshToken(userid);
-			resultMap.put("message", SUCCESS);
-			status = HttpStatus.ACCEPTED;
-		} catch (Exception e) {
-			logger.error("로그아웃 실패 : {}", e);
-			resultMap.put("message", e.getMessage());
-			status = HttpStatus.INTERNAL_SERVER_ERROR;
-		}
-		return new ResponseEntity<Map<String, Object>>(resultMap, status);
+	 @CrossOrigin(origins ="http:localhost:8080")
+	    @ApiOperation(value = "로그아웃", notes = "회원 정보를 담은 Token을 제거한다.", response = Map.class)
+	    @GetMapping("/logout/{userid}")
+	    public ResponseEntity<?> removeToken(@PathVariable("userid") String userid) {
+	        Map<String, Object> resultMap = new HashMap<>();
+	        HttpStatus status = HttpStatus.ACCEPTED;
+	        try {
+	            memberService.deleRefreshToken(userid);
+	            resultMap.put("message", SUCCESS);
+	            status = HttpStatus.ACCEPTED;
+	        } catch (Exception e) {
+	            logger.error("로그아웃 실패 : {}", e);
+	            resultMap.put("message", e.getMessage());
+	            status = HttpStatus.INTERNAL_SERVER_ERROR;
+	        }
+	        return new ResponseEntity<Map<String, Object>>(resultMap, status);
 
-	}
+	    }
 
 	@ApiOperation(value = "Access Token 재발급", notes = "만료된 access token을 재발급받는다.", response = Map.class)
 	@PostMapping("/refresh")

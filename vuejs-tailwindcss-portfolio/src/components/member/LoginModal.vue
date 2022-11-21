@@ -26,7 +26,7 @@
 									<div class="mt-0">
 										<input
 											class="w-full px-5 py-2 border-1 border-gray-200 dark:border-secondary-dark rounded-md text-md bg-secondary-light dark:bg-ternary-dark text-primary-dark dark:text-ternary-light"
-											id="email" name="email" type="text" required="" placeholder="email" v-model="user.userid" @keyup.enter="confirm"
+											id="id" name="id" type="text" required="" placeholder="id" v-model="user.userid" @keyup.enter="confirm"
 											aria-label="Name" />
 									</div>
 

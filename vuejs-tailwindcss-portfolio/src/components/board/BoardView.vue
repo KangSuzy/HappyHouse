@@ -64,7 +64,7 @@ export default {
       //   this.$router.push({ path: `/board/modify/${this.article.articleno}` });
     },
     deleteArticle() {
-      if (confirm("정말로 삭제?")) {
+      if (confirm("정말로 삭제하시겠습니까 ?")) {
         this.$router.replace({
           name: "boarddelete",
           params: { articleno: this.article.articleno },
