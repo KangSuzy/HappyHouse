@@ -1,23 +1,24 @@
 <template>
   <b-container v-if="house" class="bv-example-row">
     <b-row>
-      <b-col
-        ><h3>{{ house.아파트 }}</h3></b-col
-      >
+      <b-col>
+        <!-- <h2>[ {{ house.아파트 }} ]</h2> -->
+        <b-alert show variant="success"><h4>APT : {{ house.아파트 }}</h4></b-alert>
+      </b-col>
     </b-row>
     <b-row class="mb-2 mt-1">
-      <b-col><b-img :src="require('@/assets/images/apt.png')" fluid-grow></b-img></b-col>
+      <b-col><kakao-map></kakao-map></b-col>
     </b-row>
-    <b-row>
+    <!-- <b-row>
       <b-col>
         <b-alert show variant="secondary">일련번호 : {{ house.일련번호 }}</b-alert>
       </b-col>
-    </b-row>
-    <b-row>
+    </b-row> -->
+    <!-- <b-row>
       <b-col>
         <b-alert show variant="primary">아파트 이름 : {{ house.아파트 }} </b-alert>
       </b-col>
-    </b-row>
+    </b-row> -->
     <b-row>
       <b-col>
         <b-alert show variant="info">법정동 : {{ house.법정동 }} </b-alert>
@@ -40,11 +41,15 @@
 
 <script>
 import { mapState } from "vuex";
+import KakaoMap from "@/components/house/KakaoMap.vue";
 
 const houseStore = "houseStore";
 
 export default {
   name: "HouseDetail",
+  components: {
+    KakaoMap
+  },
   computed: {
     ...mapState(houseStore, ["house"]),
     // house() {

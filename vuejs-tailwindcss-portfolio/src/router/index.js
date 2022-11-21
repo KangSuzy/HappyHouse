@@ -27,6 +27,13 @@ const routes = [
 		name: "house",
 		component: () =>
 			import('../views/AppHouse.vue'),
+		children: [
+			{
+				path: "map",
+				name: "kakaomap",
+				component: () => import("@/components/house/KakaoMap"),
+			},
+		],
 		meta: {
 			title: 'WhereIsHome - House Search',
 		},

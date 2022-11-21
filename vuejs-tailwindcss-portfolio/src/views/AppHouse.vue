@@ -16,7 +16,7 @@
         <house-list />
       </b-col>
       <b-col cols="6">
-        <house-detail />
+        <house-detail></house-detail>
       </b-col>
     </b-row>
   </b-container>

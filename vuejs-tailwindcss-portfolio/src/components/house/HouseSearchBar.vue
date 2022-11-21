@@ -11,10 +11,10 @@
       <b-button variant="outline-primary" @click="sendKeyword">검색</b-button>
     </b-col> -->
     <b-col class="sm-3">
-      <b-form-select v-model="sidoCode" :options="sidos" @change="gugunList"></b-form-select>
+      <b-form-select v-model="sidoCode" :options="sidos"></b-form-select>
     </b-col>
     <b-col class="sm-3">
-      <b-form-select v-model="gugunCode" :options="guguns" @change="searchApt"></b-form-select>
+      <b-form-select v-model="gugunCode" :options="guguns"></b-form-select>
     </b-col>
   </b-row>
 </template>
@@ -48,6 +48,16 @@ export default {
     //   return this.$store.state.sidos;
     // },
   },
+  watch: {
+    sidoCode(val) {
+      this.sidoCode = val;
+      this.gugunList();
+    },
+    gugunCode(val) {
+      this.gugunCode = val;
+      this.searchApt();
+    }
+  },
   created() {
     // this.$store.dispatch("getSido");
     // this.sidoList();
@@ -63,7 +73,7 @@ export default {
     //   this.getSido();
     // },
     gugunList() {
-      // console.log(this.sidoCode);
+      console.log(this.sidoCode);
       this.CLEAR_GUGUN_LIST();
       this.gugunCode = null;
       if (this.sidoCode) this.getGugun(this.sidoCode);
