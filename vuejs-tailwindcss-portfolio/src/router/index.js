@@ -26,14 +26,14 @@ const routes = [
 		path: "/house",
 		name: "house",
 		component: () =>
-			import('../views/AppHouse.vue'),
-		children: [
-			{
-				path: "map",
-				name: "kakaomap",
-				component: () => import("@/components/house/KakaoMap"),
-			},
-		],
+			import('@/views/AppHouse'),
+		// children: [
+		// 	{
+		// 		path: "map",
+		// 		name: "kakaomap",
+		// 		component: () => import("@/components/house/KakaoMap"),
+		// 	},
+		// ],
 		meta: {
 			title: 'WhereIsHome - House Search',
 		},
