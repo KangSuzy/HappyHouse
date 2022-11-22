@@ -3,7 +3,9 @@
     <b-row>
       <b-col>
         <!-- <h2>[ {{ house.아파트 }} ]</h2> -->
-        <b-alert show variant="success"><h4>APT : {{ house.아파트 }}</h4></b-alert>
+        <b-alert show variant="success"
+          ><h4>APT : {{ house.아파트 }}</h4></b-alert
+        >
       </b-col>
     </b-row>
     <b-row class="mb-2 mt-1">
@@ -32,7 +34,7 @@
     <b-row>
       <b-col>
         <b-alert show variant="danger"
-          >거래금액 : {{ (parseInt(house.거래금액.replace(",", "")) * 10000)}}원</b-alert
+          >거래금액 : {{ parseInt(house.거래금액.replace(",", "")) * 10000 }}원</b-alert
         >
       </b-col>
     </b-row>
@@ -48,7 +50,7 @@ const houseStore = "houseStore";
 export default {
   name: "HouseDetail",
   components: {
-    KakaoMap
+    KakaoMap,
   },
   computed: {
     ...mapState(houseStore, ["house"]),
