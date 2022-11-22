@@ -2,6 +2,7 @@ package com.ssafy.vue.controller;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,9 +17,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ssafy.util.OpenCrypt;
 import com.ssafy.vue.model.MemberDto;
+import com.ssafy.vue.model.SecDto;
 import com.ssafy.vue.model.service.JwtServiceImpl;
 import com.ssafy.vue.model.service.MemberService;
 
@@ -41,39 +45,80 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
-	@CrossOrigin(origins ="http:localhost:8080")
-	@ApiOperation(value = "로그인", notes = "Access-token과 로그인 결과 메세지를 반환한다.", response = Map.class)
-	@PostMapping("/login")
-	public ResponseEntity<Map<String, Object>> login(
-			@RequestBody @ApiParam(value = "로그인 시 필요한 회원정보(아이디, 비밀번호).", required = true) MemberDto memberDto) {
+	@CrossOrigin(origins = "http:localhost:8080")
+	@PostMapping("/join")
+	public ResponseEntity<Map<String, Object>> join(@RequestBody MemberDto memberDto) throws Exception{
 		Map<String, Object> resultMap = new HashMap<>();
 		HttpStatus status = null;
-		try {
-			MemberDto loginUser = memberService.login(memberDto);
-			if (loginUser != null) {
-				String accessToken = jwtService.createAccessToken("userid", loginUser.getUserid());// key, data
-				String refreshToken = jwtService.createRefreshToken("userid", loginUser.getUserid());// key, data
-				memberService.saveRefreshToken(memberDto.getUserid(), refreshToken);
-				logger.debug("로그인 accessToken 정보 : {}", accessToken);
-				logger.debug("로그인 refreshToken 정보 : {}", refreshToken);
-				resultMap.put("access-token", accessToken);
-				resultMap.put("refresh-token", refreshToken);
-				resultMap.put("message", SUCCESS);
-				status = HttpStatus.ACCEPTED;
-			} else {
-				resultMap.put("message", FAIL);
-				status = HttpStatus.ACCEPTED;
-			}
-		} catch (Exception e) {
-			logger.error("로그인 실패 : {}", e);
-			resultMap.put("message", e.getMessage());
-			status = HttpStatus.INTERNAL_SERVER_ERROR;
+		
+	   // 암호화
+	   byte[] key=OpenCrypt.generateKey("AES",128);
+// 	   System.out.println("key length:"+key.length);
+ 	   SecDto sec=
+ 			   new SecDto(memberDto.getUserid(),UUID.randomUUID().toString(),OpenCrypt.byteArrayToHex(key));
+ 	   memberService.insertSecurity(sec);		// 암호화 테이블에 넣기
+ 		  memberDto.setUserpwd(new String(OpenCrypt.getSHA256(memberDto.getUserpwd(), sec.getSalt())));    
+ 	   
+ 	   // 암호화 후 회원가입
+		int i = memberService.join(memberDto);
+		if(i > 0) {
+			resultMap.put("message", SUCCESS);
+			status = HttpStatus.ACCEPTED;
+		}else {
+			resultMap.put("message", FAIL);
+			status = HttpStatus.ACCEPTED;
 		}
 		return new ResponseEntity<Map<String, Object>>(resultMap, status);
 	}
 
 	
-	@CrossOrigin(origins ="http:localhost:8080")
+	@CrossOrigin(origins = "http:localhost:8080")
+	@ApiOperation(value = "로그인", notes = "Access-token과 로그인 결과 메세지를 반환한다.", response = Map.class)
+	@PostMapping("/login")
+	public ResponseEntity<Map<String, Object>> login(
+			@RequestBody @ApiParam(value = "로그인 시 필요한 회원정보(아이디, 비밀번호).", required = true) MemberDto memberDto) throws Exception {
+		Map<String, Object> resultMap = new HashMap<>();
+		HttpStatus status = null;
+		String isDel = memberService.isDelUser(memberDto.getUserid());
+		//System.out.println("isDel: "+isDel);
+		if(isDel.equals("0")) {
+			try {
+				
+				SecDto sec = memberService.selectSecurity(memberDto.getUserid());
+				String salt = sec.getSalt();
+				String pwd = new String(OpenCrypt.getSHA256(memberDto.getUserpwd(), salt));
+				memberDto.setUserpwd(pwd);
+				
+				MemberDto loginUser = memberService.login(memberDto);
+				if (loginUser != null) {
+					String accessToken = jwtService.createAccessToken("userid", loginUser.getUserid());// key, data
+					String refreshToken = jwtService.createRefreshToken("userid", loginUser.getUserid());// key, data
+					memberService.saveRefreshToken(memberDto.getUserid(), refreshToken);
+					logger.debug("로그인 accessToken 정보 : {}", accessToken);
+					logger.debug("로그인 refreshToken 정보 : {}", refreshToken);
+					resultMap.put("access-token", accessToken);
+					resultMap.put("refresh-token", refreshToken);
+					resultMap.put("message", SUCCESS);
+					status = HttpStatus.ACCEPTED;
+				} else {
+					resultMap.put("message", FAIL);
+					status = HttpStatus.ACCEPTED;
+				}
+			} catch (Exception e) {
+				logger.error("로그인 실패 : {}", e);
+				resultMap.put("message", e.getMessage());
+				status = HttpStatus.INTERNAL_SERVER_ERROR;
+			}
+		}
+		else {
+			resultMap.put("message", FAIL);
+			status = HttpStatus.BAD_REQUEST;
+		}
+		return new ResponseEntity<Map<String, Object>>(resultMap, status);
+	}
+
+
+	@CrossOrigin(origins = "http:localhost:8080")
 	@ApiOperation(value = "회원인증", notes = "회원 정보를 담은 Token을 반환한다.", response = Map.class)
 	@GetMapping("/info/{userid}")
 	public ResponseEntity<Map<String, Object>> getInfo(
@@ -103,25 +148,24 @@ public class MemberController {
 		return new ResponseEntity<Map<String, Object>>(resultMap, status);
 	}
 
-	
-	 @CrossOrigin(origins ="http:localhost:8080")
-	    @ApiOperation(value = "로그아웃", notes = "회원 정보를 담은 Token을 제거한다.", response = Map.class)
-	    @GetMapping("/logout/{userid}")
-	    public ResponseEntity<?> removeToken(@PathVariable("userid") String userid) {
-	        Map<String, Object> resultMap = new HashMap<>();
-	        HttpStatus status = HttpStatus.ACCEPTED;
-	        try {
-	            memberService.deleRefreshToken(userid);
-	            resultMap.put("message", SUCCESS);
-	            status = HttpStatus.ACCEPTED;
-	        } catch (Exception e) {
-	            logger.error("로그아웃 실패 : {}", e);
-	            resultMap.put("message", e.getMessage());
-	            status = HttpStatus.INTERNAL_SERVER_ERROR;
-	        }
-	        return new ResponseEntity<Map<String, Object>>(resultMap, status);
+	@CrossOrigin(origins = "http:localhost:8080")
+	@ApiOperation(value = "로그아웃", notes = "회원 정보를 담은 Token을 제거한다.", response = Map.class)
+	@GetMapping("/logout/{userid}")
+	public ResponseEntity<?> removeToken(@PathVariable("userid") String userid) {
+		Map<String, Object> resultMap = new HashMap<>();
+		HttpStatus status = HttpStatus.ACCEPTED;
+		try {
+			memberService.deleRefreshToken(userid);
+			resultMap.put("message", SUCCESS);
+			status = HttpStatus.ACCEPTED;
+		} catch (Exception e) {
+			logger.error("로그아웃 실패 : {}", e);
+			resultMap.put("message", e.getMessage());
+			status = HttpStatus.INTERNAL_SERVER_ERROR;
+		}
+		return new ResponseEntity<Map<String, Object>>(resultMap, status);
 
-	    }
+	}
 
 	@ApiOperation(value = "Access Token 재발급", notes = "만료된 access token을 재발급받는다.", response = Map.class)
 	@PostMapping("/refresh")
@@ -146,5 +190,7 @@ public class MemberController {
 		}
 		return new ResponseEntity<Map<String, Object>>(resultMap, status);
 	}
+
+
 
 }

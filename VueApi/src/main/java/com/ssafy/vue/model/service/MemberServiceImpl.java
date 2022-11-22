@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ssafy.vue.model.MemberDto;
+import com.ssafy.vue.model.SecDto;
 import com.ssafy.vue.model.mapper.MemberMapper;
 
 @Service
@@ -48,5 +49,26 @@ public class MemberServiceImpl implements MemberService {
 		map.put("token", null);
 		sqlSession.getMapper(MemberMapper.class).deleteRefreshToken(map);
 	}
+
+	@Override
+	public int join(MemberDto m) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(MemberMapper.class).join(m);
+	}
+	
+	@Override
+	public void insertSecurity(SecDto sec) throws Exception {
+		sqlSession.getMapper(MemberMapper.class).insertSecurity(sec);
+	}
+	@Override
+	public String isDelUser(String userid) throws Exception {
+		return sqlSession.getMapper(MemberMapper.class).isDelUser(userid);
+	}
+
+	@Override
+	public SecDto selectSecurity(String userid) throws Exception {
+		return sqlSession.getMapper(MemberMapper.class).selectSecurity(userid);
+	}
+
 
 }

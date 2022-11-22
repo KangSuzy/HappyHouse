@@ -1,8 +1,54 @@
+<script>
+import { mapState, mapActions } from "vuex";
+import feather from 'feather-icons';
+import Button from '../reusable/Button.vue';
+const memberStore = "memberStore";
+
+export default {
+	props: ['loginModal', 'modal', 'categories'],
+	components: { Button },
+	mounted() {
+		feather.replace();
+	},
+	updated() {
+		feather.replace();
+	},
+	data() {
+		return {
+			// isLoginError: false,
+			user: {
+				userid: null,
+				userpwd: null,
+			},
+		};
+	},
+	computed: {
+		...mapState(memberStore, ["isLogin", "isLoginError", "userInfo"]),
+	},
+	methods: {
+
+		...mapActions(memberStore, ["userConfirm", "getUserInfo"]),
+		async confirm() {
+
+			await this.userConfirm(this.user);
+
+			let token = sessionStorage.getItem("access-token");
+			// console.log("1. confirm() token >> " + token);
+			if (this.isLogin) {
+				await this.getUserInfo(token);
+				// console.log("4. confirm() userInfo :: ", this.userInfo);
 
 
+				this.$router.push({ name: "Home" });
+				this.loginModal();
+			}
+		},
+	},
+};
+</script>
 <template>
 	<transition name="fade">
-		<div  id="login" v-show="modal" class="font-general-regular fixed inset-0 z-30">
+		<div id="login" v-show="modal" class="font-general-regular fixed inset-0 z-30">
 			<!-- Modal body background as backdrop -->
 			<div v-show="modal" @click="loginModal()"
 				class="bg-filter bg-black bg-opacity-50 fixed inset-0 w-full h-full z-20"></div>
@@ -26,15 +72,15 @@
 									<div class="mt-0">
 										<input
 											class="w-full px-5 py-2 border-1 border-gray-200 dark:border-secondary-dark rounded-md text-md bg-secondary-light dark:bg-ternary-dark text-primary-dark dark:text-ternary-light"
-											id="id" name="id" type="text" required="" placeholder="id" v-model="user.userid" @keyup.enter="confirm"
-											aria-label="Name" />
+											id="id" name="id" type="text" required="" placeholder="id" v-model="user.userid"
+											@keyup.enter="confirm" aria-label="Name" />
 									</div>
 
 									<div class="mt-6">
 										<input
 											class="w-full px-5 py-2 border-1 border-gray-200 dark:border-secondary-dark rounded-md text-md bg-secondary-light dark:bg-ternary-dark text-primary-dark dark:text-ternary-light"
-											id="password" name="password" type="password" required="" v-model="user.userpwd" @keyup.enter="confirm"
-											placeholder="Password" aria-label="Password" />
+											id="password" name="password" type="password" required="" v-model="user.userpwd"
+											@keyup.enter="confirm" placeholder="Password" aria-label="Password" />
 									</div>
 
 									<div class="mt-6 pb-4 sm:pb-1">
@@ -46,8 +92,11 @@
 											bg-indigo-500
 											hover:bg-indigo-600
 											rounded-md
-											focus:ring-1 focus:ring-indigo-900 duration-500"
-											@click.prevent="confirm" aria-label="logIn" />
+											focus:ring-1 focus:ring-indigo-900 duration-500" @click.prevent="confirm" aria-label="logIn" />
+										<a
+											href="https://kauth.kakao.com/oauth/authorize?client_id=287f13fb5dc5cffc0e04922990ef5d2e&redirect_uri=http://localhost:8888/login_kakao&response_type=code">
+											<img src="img/kakao_login_small.png">
+										</a>
 									</div>
 								</form>
 							</div>
@@ -67,68 +116,14 @@
 </template>
 
 
-<script>
-import { mapState, mapActions } from "vuex";
-import feather from 'feather-icons';
-import Button from '../reusable/Button.vue';
-const memberStore = "memberStore";
-
-export default {
-  name: "UserLogin",
-	props: ['loginModal','modal', 'categories'],
-	components: { Button },
-	mounted() {
-		feather.replace();
-	},
-	updated() {
-		feather.replace();
-	},
-  data() {
-    return {
-      // isLoginError: false,
-      user: {
-        userid: null,
-        userpwd: null,
-      },
-    };
-  },
-  computed: {
-    ...mapState(memberStore, ["isLogin", "isLoginError", "userInfo"]),
-  },
-  methods: {
-
-		
-
-
-    ...mapActions(memberStore, ["userConfirm", "getUserInfo"]),
-    async confirm() {
-			
-      await this.userConfirm(this.user);
-			
-      let token = sessionStorage.getItem("access-token");
-      // console.log("1. confirm() token >> " + token);
-      if (this.isLogin) {
-        await this.getUserInfo(token);
-        // console.log("4. confirm() userInfo :: ", this.userInfo);
-				
-
-        this.$router.push({ name: "Home" });
-				this.loginModal();
-      }
-    },
-  },
-};
-</script>
-
 
 <style scoped>
-
 #login {
-    
-    width :600px;
-    height : 1000px;
 
-  }
+	width: 600px;
+	height: 1000px;
+
+}
 
 .modal-body {
 	max-height: 500px;

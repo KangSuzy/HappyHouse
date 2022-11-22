@@ -1,11 +1,22 @@
 <script>
+import {mapActions } from "vuex";
 import feather from 'feather-icons';
 import Button from '../reusable/Button.vue';
+const memberStore = "memberStore";
 export default {
 	props: ['registModal','modal1', 'categories'],
 	components: { Button },
 	data() {
-		return {};
+		return {
+			user: {
+				userid: null,
+				username:null,
+				userpwd: null,
+				useremail: null
+			},
+
+
+		};
 	},
 	mounted() {
 		feather.replace();
@@ -14,7 +25,14 @@ export default {
 		feather.replace();
 	},
 	methods: {
-		submit() {
+
+		...mapActions(memberStore, ["joinUser"]),
+
+		async submit() {
+			console.log(this.user.userid+" "+this.user.username+" "+this.user.userpwd+" "+this.user.useremail+" ");
+			await this.joinUser(this.user);
+			this.$router.push({ name: "Home" });
+			this.registModal();
 		}
 	}
 };
@@ -47,18 +65,23 @@ export default {
 									<div class="mt-0">
 										<input
 											class="w-full px-5 py-2 border-1 border-gray-200 dark:border-secondary-dark rounded-md text-md bg-secondary-light dark:bg-ternary-dark text-primary-dark dark:text-ternary-light"
-											id="name" name="name" type="text" required="text" placeholder="Name" aria-label="Name" />
+											id="id" name="id" type="text" v-model="user.userid" required="text" placeholder="ID" aria-label="Name" />
 									</div>
 									<div class="mt-6">
 										<input
 											class="w-full px-5 py-2 border-1 border-gray-200 dark:border-secondary-dark rounded-md text-md bg-secondary-light dark:bg-ternary-dark text-primary-dark dark:text-ternary-light"
-											id="email" name="email" type="email" required="email" placeholder="Email" aria-label="Email" />
+											id="name" name="name" type="text" v-model="user.username" required="text" placeholder="Name" aria-label="Name" />
+									</div>
+									<div class="mt-6">
+										<input
+											class="w-full px-5 py-2 border-1 border-gray-200 dark:border-secondary-dark rounded-md text-md bg-secondary-light dark:bg-ternary-dark text-primary-dark dark:text-ternary-light"
+											id="email" name="email" type="email" v-model="user.useremail" required="email" placeholder="Email" aria-label="Email" />
 									</div>
 
 									<div class="mt-6">
 										<input
 											class="w-full px-5 py-2 border-1 border-gray-200 dark:border-secondary-dark rounded-md text-md bg-secondary-light dark:bg-ternary-dark text-primary-dark dark:text-ternary-light"
-											id="password" name="password" type="password" required="password" placeholder="Password"
+											id="password" name="password" type="password" v-model="user.userpwd" required="password" placeholder="Password"
 											aria-label="Password" />
 									</div>
 
@@ -71,7 +94,7 @@ export default {
 											bg-indigo-500
 											hover:bg-indigo-600
 											rounded-md
-											focus:ring-1 focus:ring-indigo-900 duration-500" @click="Summit()" aria-label="SignIn" />
+											focus:ring-1 focus:ring-indigo-900 duration-500" @click.prevent="submit" aria-label="SignIn" />
 									</div>
 								</form>
 							</div>

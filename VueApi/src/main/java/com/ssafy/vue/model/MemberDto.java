@@ -13,7 +13,7 @@ public class MemberDto {
 	@ApiModelProperty(value = "회원 비밀번호")
 	private String userpwd;
 	@ApiModelProperty(value = "회원 이메일")
-	private String email;
+	private String useremail;
 	@ApiModelProperty(value = "회원 가입일")
 	private String joindate;
 
@@ -42,11 +42,11 @@ public class MemberDto {
 	}
 
 	public String getEmail() {
-		return email;
+		return useremail;
 	}
 
 	public void setEmail(String email) {
-		this.email = email;
+		this.useremail = email;
 	}
 
 	public String getJoindate() {
