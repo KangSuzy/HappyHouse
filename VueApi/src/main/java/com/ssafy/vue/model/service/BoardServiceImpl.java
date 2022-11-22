@@ -30,6 +30,7 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardDto> listArticle(BoardParameterDto boardParameterDto) throws Exception {
 		int start = boardParameterDto.getPg() == 0 ? 0 : (boardParameterDto.getPg() - 1) * boardParameterDto.getSpp();
 		boardParameterDto.setStart(start);
+		
 		return sqlSession.getMapper(BoardMapper.class).listArticle(boardParameterDto);
 	}
 
@@ -73,4 +74,9 @@ public class BoardServiceImpl implements BoardService {
 		sqlSession.getMapper(BoardMapper.class).deleteMemo(articleno);
 		return sqlSession.getMapper(BoardMapper.class).deleteArticle(articleno) == 1;
 	}
+	
+	@Override
+    public int getTotalCount(BoardParameterDto boardParameterDto) throws Exception {
+        return sqlSession.getMapper(BoardMapper.class).getTotalCount(boardParameterDto);
+    }
 }

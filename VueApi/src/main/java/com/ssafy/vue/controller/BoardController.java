@@ -59,6 +59,15 @@ public class BoardController {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8080")
+	@ApiOperation(value = "게시판 전체 글 수", notes = "글의 수를 반환한다.", response = int.class)
+    @GetMapping("/total")
+    // 리스트 수를 보내주기 위한 메소드
+    public int getTotalCount(@ApiParam(value = "게시글을 얻기위한 부가정보.", required = true) BoardParameterDto boardParameterDto) throws Exception {
+        logger.info("totlacount - 호출:   "+boardService.getTotalCount(boardParameterDto));
+        return boardService.getTotalCount(boardParameterDto);
+    }
+	
+	@CrossOrigin(origins = "http://localhost:8080")
 	@ApiOperation(value = "게시판 글보기", notes = "글번호에 해당하는 게시글의 정보를 반환한다.", response = BoardDto.class)
 	@GetMapping("/{articleno}")
 	public ResponseEntity<BoardDto> getArticle(@PathVariable("articleno") @ApiParam(value = "얻어올 글의 글번호.", required = true) int articleno) throws Exception {
