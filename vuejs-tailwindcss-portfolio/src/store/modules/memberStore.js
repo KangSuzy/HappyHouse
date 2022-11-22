@@ -1,6 +1,6 @@
 import jwtDecode from "jwt-decode";
 import router from "@/router";
-import { login, findById, tokenRegeneration, logout } from "@/api/member";
+import { login, findById, tokenRegeneration, logout, join } from "@/api/member";
 
 const memberStore = {
   namespaced: true,
@@ -35,7 +35,6 @@ const memberStore = {
   },
   actions: {
     async userConfirm({ commit }, user) {
-
       await login(
         user,
         ({ data }) => {
@@ -138,7 +137,24 @@ const memberStore = {
         }
       );
     },
+    async joinUser(context,user) {
+      console.log(context);
+      await join(
+        user,
+        ({ data }) => {
+          
+          if (data.message === "success") {
+            alert("회원가입 완료!");
+          } else {
+            alert("회원가입 실패!");
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   },
+},
 };
 
 export default memberStore;
