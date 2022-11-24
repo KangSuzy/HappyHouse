@@ -35,12 +35,14 @@
 
         <b-form-group id="file-group" label="파일" label-for="file_name">
           <div class="custom-file">
-            <input id="customFile" type="file" @change="handleFileChange"/>
-            <label class="custom-file-label" for="customFile">{{file_name}}</label>
+            <input id="customFile" type="file" @change="handleFileChange" />
+            <label class="custom-file-label" for="customFile">{{ file_name }}</label>
           </div>
         </b-form-group>
 
-        <b-button type="submit" variant="primary" class="m-1" v-if="this.type === 'register'">Post</b-button>
+        <b-button type="submit" variant="primary" class="m-1" v-if="this.type === 'register'"
+          >Post</b-button
+        >
         <b-button type="submit" variant="primary" class="m-1" v-else>Modify</b-button>
         <b-button type="reset" variant="danger" class="m-1">Cancel</b-button>
       </b-form>
@@ -70,7 +72,7 @@ export default {
   },
   created() {
     if (this.type === "modify") {
-      http.get(`/board/${this.$route.params.articleno}`).then(({ data }) => {
+      http.get(`/board/${this.$route.query.articleno}`).then(({ data }) => {
         // this.article.articleno = data.article.articleno;
         // this.article.userid = data.article.userid;
         // this.article.subject = data.article.subject;
@@ -85,9 +87,14 @@ export default {
       event.preventDefault();
       let err = true;
       let msg = "";
-      !this.article.userid && ((msg = "작성자 입력해주세요"), (err = false), this.$refs.userid.focus());
-      err && !this.article.subject && ((msg = "제목 입력해주세요"), (err = false), this.$refs.subject.focus());
-      err && !this.article.content && ((msg = "내용 입력해주세요"), (err = false), this.$refs.content.focus());
+      !this.article.userid &&
+        ((msg = "작성자 입력해주세요"), (err = false), this.$refs.userid.focus());
+      err &&
+        !this.article.subject &&
+        ((msg = "제목 입력해주세요"), (err = false), this.$refs.subject.focus());
+      err &&
+        !this.article.content &&
+        ((msg = "내용 입력해주세요"), (err = false), this.$refs.content.focus());
 
       if (!err) alert(msg);
       else this.type === "register" ? this.registArticle() : this.modifyArticle();
@@ -106,7 +113,7 @@ export default {
           userid: this.article.userid,
           subject: this.article.subject,
           content: this.article.content,
-          file_name : this.article.file_name,
+          file_name: this.article.file_name,
         })
         .then(({ data }) => {
           let msg = "등록 처리시 문제가 발생했습니다.";
@@ -120,7 +127,7 @@ export default {
     modifyArticle() {
       http
         .put(`/board`, {
-          articleno: this.article.articleno,
+          articleno: parseInt(this.article.articleno),
           userid: this.article.userid,
           subject: this.article.subject,
           content: this.article.content,

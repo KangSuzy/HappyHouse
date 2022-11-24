@@ -25,11 +25,12 @@
         <b-button variant="outline-primary" @click="moveList">List</b-button>
       </b-col>
       <b-col class="text-right">
-        <b-button variant="outline-info" size="sm" @click="moveModifyArticle" class="mr-2">Modify</b-button>
+        <b-button variant="outline-info" size="sm" @click="moveModifyArticle" class="mr-2"
+          >Modify</b-button
+        >
         <b-button variant="outline-danger" size="sm" @click="deleteArticle">Delete</b-button>
       </b-col>
     </b-row>
-
   </b-container>
 </template>
 
@@ -59,7 +60,7 @@ export default {
     moveModifyArticle() {
       this.$router.replace({
         name: "boardmodify",
-        params: { articleno: this.article.articleno },
+        query: { articleno: this.article.articleno },
       });
       //   this.$router.push({ path: `/board/modify/${this.article.articleno}` });
     },

@@ -1,27 +1,69 @@
 <!DOCTYPE html>
 <html lang="">
-	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
-		<link rel="icon" href="./favicon.png" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-			rel="stylesheet"
-		/>
-		<title><%= htmlWebpackPlugin.options.title %></title>
-	</head>
-	<body id="app-theme" class="app-theme">
-		<noscript>
-			<strong
-				>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't
-				work properly without JavaScript enabled. Please enable it to
-				continue.</strong
-			>
-		</noscript>
-		<div id="app"></div>
-		<!-- built files will be auto injected -->
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="./favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body id="app-theme" class="app-theme">
+    <noscript>
+      <strong
+        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without
+        JavaScript enabled. Please enable it to continue.</strong
+      >
+    </noscript>
+    <div id="app">
+      <script>
+        (function () {
+          var w = window;
+          if (w.ChannelIO) {
+            return (window.console.error || window.console.log || function () {})(
+              "ChannelIO script included twice."
+            );
+          }
+          var ch = function () {
+            ch.c(arguments);
+          };
+          ch.q = [];
+          ch.c = function (args) {
+            ch.q.push(args);
+          };
+          w.ChannelIO = ch;
+          function l() {
+            if (w.ChannelIOInitialized) {
+              return;
+            }
+            w.ChannelIOInitialized = true;
+            var s = document.createElement("script");
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://cdn.channel.io/plugin/ch-plugin-web.js";
+            s.charset = "UTF-8";
+            var x = document.getElementsByTagName("script")[0];
+            x.parentNode.insertBefore(s, x);
+          }
+          if (document.readyState === "complete") {
+            l();
+          } else if (window.attachEvent) {
+            window.attachEvent("onload", l);
+          } else {
+            window.addEventListener("DOMContentLoaded", l, false);
+            window.addEventListener("load", l, false);
+          }
+        })();
+        ChannelIO("boot", {
+          pluginKey: "b8fcdbd5-800c-469a-b840-8baffbf2aed6",
+        });
+      </script>
+    </div>
+    <!-- built files will be auto injected -->
+  </body>
 </html>
