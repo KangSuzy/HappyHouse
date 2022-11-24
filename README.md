@@ -77,7 +77,7 @@ _비기능적 요구사항_
 ## 📌 Apt Info
 
 - 시군동 등으로 검색이 가능한 주택실거래가 검색 페이지
-- 차후 아파트 사진과 지도 추가 예정, 검색한 결과표 위치 고민중
+- 차후 아파트 사진 및 상세정보와 지도 추가 예정, 검색한 결과표 위치 고민중
 
 <img src="vuejs-tailwindcss-portfolio/src/assets/images/aptInfo.png" />
 
@@ -148,4 +148,4 @@ _비기능적 요구사항_
 
 #### 행위자와 요구사항의 수행과정
 
-<img src="vuejs-tailwindcss-portfolio/src/assets/images/다이어그램1.jpg" />
+<img src="vuejs-tailwindcss-portfolio/src/assets/images/usecase.jpg" />
