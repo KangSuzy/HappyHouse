@@ -70,5 +70,11 @@ public class MemberServiceImpl implements MemberService {
 		return sqlSession.getMapper(MemberMapper.class).selectSecurity(userid);
 	}
 
+	@Override
+	public MemberDto isUser(MemberDto memberDto) {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(MemberMapper.class).selectUser(memberDto.getUserid());
+	}
+
 
 }

@@ -6,14 +6,25 @@
 
 
 	<insert id="join" parameterType="memberDto">
-		insert into ssafy_member (userid,username,userpwd,email,joindate)
-		values(#{userid}, #{username},#{userpwd} ,#{useremail} ,"2022-11-17 15:35:25" )
+		insert into ssafy_member
+		(userid,username,userpwd,email,joindate)
+		values(#{userid},
+		#{username},#{userpwd} ,#{useremail} ,"2022-11-17 15:35:25" )
 	</insert>
-	
-	 	<insert id="insertSecurity" parameterType="com.ssafy.vue.model.SecDto">
-  		insert into member_sec (userid,salt,seckey) values(#{userid}, #{salt}, #{seckey})
-  	</insert>
-	
+
+	<insert id="insertSecurity"
+		parameterType="com.ssafy.vue.model.SecDto">
+		insert into member_sec (userid,salt,seckey) values(#{userid}, #{salt},
+		#{seckey})
+	</insert>
+
+	<select id="selectUser" parameterType="memberDto"
+		resultType="memberDto">
+		select username, userid, email
+		from ssafy_member
+		where userid
+		= #{userid} 
+	</select>
 
 
 	<select id="login" parameterType="memberDto"
@@ -51,18 +62,21 @@
 		where userid =
 		#{userid}
 	</update>
-	
-	<select id="isDelUser" parameterType="memberDto" resultType="String">
+
+	<select id="isDelUser" parameterType="memberDto"
+		resultType="String">
 		select isDel
 		from ssafy_member
 		where userid = #{userid}
 	</select>
-	
-		<select id="selectSecurity" parameterType="String" resultType="com.ssafy.vue.model.SecDto">
+
+	<select id="selectSecurity" parameterType="String"
+		resultType="com.ssafy.vue.model.SecDto">
 		select userid, salt, seckey
 		from member_sec
-		where userid = #{userid}
+		where userid =
+		#{userid}
 	</select>
-	
+
 
 </mapper>

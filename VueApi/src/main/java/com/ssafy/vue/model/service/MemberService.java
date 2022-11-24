@@ -14,4 +14,5 @@ public interface MemberService {
 	public String isDelUser(String userid) throws Exception;
 	public void insertSecurity(SecDto sec) throws Exception;
 	public SecDto selectSecurity(String userid) throws Exception;
+	public MemberDto isUser(MemberDto memberDto);
 }

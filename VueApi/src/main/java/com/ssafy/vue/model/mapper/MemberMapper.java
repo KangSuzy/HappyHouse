@@ -20,5 +20,6 @@ public interface MemberMapper {
 	public void insertSecurity(SecDto sec) throws SQLException;
 	public String isDelUser(String userid) throws SQLException;
 	public SecDto selectSecurity(String userid) throws SQLException;
+	public MemberDto selectUser(String userid);
 
 }

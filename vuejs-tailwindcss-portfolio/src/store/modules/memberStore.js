@@ -155,6 +155,9 @@ const memberStore = {
            else if(data.message === "nullvalue") {
             alert("빈칸을 모두 채워주세요!");
           }
+          else if(data.message === "duplicated") {
+            alert("이미 존재하는 ID입니다. 다른 ID를 사용해주세요!");
+          }
           else{
             alert("회원가입 실패!");
           }

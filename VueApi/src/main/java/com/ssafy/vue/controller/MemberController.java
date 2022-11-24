@@ -39,6 +39,7 @@ public class MemberController {
 	private static final String SUCCESS = "success";
 	private static final String FAIL = "fail";
 	private static final String NULLVALUE = "nullvalue";
+	private static final String DUPLICATED ="duplicated";
 	@Autowired
 	private JwtServiceImpl jwtService;
 
@@ -56,6 +57,13 @@ public class MemberController {
 			status = HttpStatus.ACCEPTED;
 			return new ResponseEntity<Map<String, Object>>(resultMap, status);
 		}
+		MemberDto isUser = memberService.isUser(memberDto);
+		if (isUser != null) {
+			resultMap.put("message",DUPLICATED );
+			status = HttpStatus.ACCEPTED;
+			return new ResponseEntity<Map<String, Object>>(resultMap, status);
+		}
+		
 	   // 암호화
 	   byte[] key=OpenCrypt.generateKey("AES",128);
 // 	   System.out.println("key length:"+key.length);
