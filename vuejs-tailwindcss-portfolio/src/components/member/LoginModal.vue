@@ -148,7 +148,6 @@ export default {
       </main>
     </div>
   </transition>
->>>>>>> 966d2b82e83c705ea39e10cab4b7f501877a9cc6
 </template>
 
 <style scoped>
