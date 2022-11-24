@@ -9,6 +9,7 @@ const memberStore = {
     isLoginError: false,
     userInfo: null,
     isValidToken: false,
+    isRegist: false,
   },
   getters: {
     checkUserInfo: function (state) {
@@ -32,6 +33,9 @@ const memberStore = {
       state.isLogin = true;
       state.userInfo = userInfo;
     },
+    SET_REGIST: (state) => {
+      state.isRegist = true;
+    },
   },
   actions: {
     async userConfirm({ commit }, user) {
@@ -49,9 +53,11 @@ const memberStore = {
             sessionStorage.setItem("access-token", accessToken);
             sessionStorage.setItem("refresh-token", refreshToken);
           } else {
+            alert("ID 또는 PW를 확인해주세요!")
             commit("SET_IS_LOGIN", false);
             commit("SET_IS_LOGIN_ERROR", true);
             commit("SET_IS_VALID_TOKEN", false);
+            
           }
         },
         (error) => {
@@ -137,15 +143,19 @@ const memberStore = {
         }
       );
     },
-    async joinUser(context,user) {
-      console.log(context);
+    async joinUser({ commit },user) {
       await join(
         user,
         ({ data }) => {
           
           if (data.message === "success") {
+            commit("SET_REGIST");
             alert("회원가입 완료!");
-          } else {
+          }
+           else if(data.message === "nullvalue") {
+            alert("빈칸을 모두 채워주세요!");
+          }
+          else{
             alert("회원가입 실패!");
           }
         },

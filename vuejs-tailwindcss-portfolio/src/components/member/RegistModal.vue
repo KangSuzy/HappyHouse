@@ -1,7 +1,7 @@
 <script>
-import {mapActions } from "vuex";
+import {mapState,mapActions } from "vuex";
 import feather from 'feather-icons';
-import Button from '../reusable/Button.vue';
+import Button from '../reusable/Button.vue'; 
 const memberStore = "memberStore";
 export default {
 	props: ['registModal','modal1', 'categories'],
@@ -12,8 +12,10 @@ export default {
 				userid: null,
 				username:null,
 				userpwd: null,
-				useremail: null
+				useremail: null,
+	
 			},
+
 
 
 		};
@@ -24,6 +26,10 @@ export default {
 	updated() {
 		feather.replace();
 	},
+	computed:{
+		...mapState(memberStore, ['isRegist'])
+	},
+
 	methods: {
 
 		...mapActions(memberStore, ["joinUser"]),
@@ -32,7 +38,11 @@ export default {
 			console.log(this.user.userid+" "+this.user.username+" "+this.user.userpwd+" "+this.user.useremail+" ");
 			await this.joinUser(this.user);
 			this.$router.push({ name: "Home" });
-			this.registModal();
+			console.log(this.isRegist)
+			if(this.isRegist==true){
+				this.registModal();
+			}
+			
 		}
 	}
 };

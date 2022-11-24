@@ -41,12 +41,14 @@ public class MemberDto {
 		this.userpwd = userpwd;
 	}
 
-	public String getEmail() {
+	
+
+	public String getUseremail() {
 		return useremail;
 	}
 
-	public void setEmail(String email) {
-		this.useremail = email;
+	public void setUseremail(String useremail) {
+		this.useremail = useremail;
 	}
 
 	public String getJoindate() {

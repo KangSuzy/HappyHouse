@@ -95,7 +95,7 @@ export default {
 											focus:ring-1 focus:ring-indigo-900 duration-500" @click.prevent="confirm" aria-label="logIn" />
 										<a
 											href="https://kauth.kakao.com/oauth/authorize?client_id=287f13fb5dc5cffc0e04922990ef5d2e&redirect_uri=http://localhost:8888/login_kakao&response_type=code">
-											<img src="img/kakao_login_small.png">
+											<img src="@/assets/images/kakao_login_small.png">
 										</a>
 									</div>
 								</form>

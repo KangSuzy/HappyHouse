@@ -38,7 +38,7 @@ public class MemberController {
 	public static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	private static final String SUCCESS = "success";
 	private static final String FAIL = "fail";
-
+	private static final String NULLVALUE = "nullvalue";
 	@Autowired
 	private JwtServiceImpl jwtService;
 
@@ -50,7 +50,12 @@ public class MemberController {
 	public ResponseEntity<Map<String, Object>> join(@RequestBody MemberDto memberDto) throws Exception{
 		Map<String, Object> resultMap = new HashMap<>();
 		HttpStatus status = null;
-		
+		if(memberDto.getUserid()==null||memberDto.getUsername()==null||memberDto.getUseremail()==null||memberDto.getUserpwd()==null){
+			System.out.println(memberDto.getUserid()+" "+memberDto.getUsername()+" "+memberDto.getUseremail()+" "+memberDto.getUserpwd());
+			resultMap.put("message",NULLVALUE );
+			status = HttpStatus.ACCEPTED;
+			return new ResponseEntity<Map<String, Object>>(resultMap, status);
+		}
 	   // 암호화
 	   byte[] key=OpenCrypt.generateKey("AES",128);
 // 	   System.out.println("key length:"+key.length);
